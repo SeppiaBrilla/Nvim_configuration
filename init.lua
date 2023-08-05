@@ -1,3 +1,4 @@
+require("my_remapping")
 return {
   -- Configure AstroNvim updates
   updater = {

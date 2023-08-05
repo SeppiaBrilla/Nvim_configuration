@@ -20,8 +20,7 @@ return {
 
     -- mappings seen under group name "Buffer"
     ["<leader>bD"] = {
-      function()
-        require("astronvim.utils.status").heirline.buffer_picker(
+      function() require("astronvim.utils.status").heirline.buffer_picker(
           function(bufnr) require("astronvim.utils.buffer").close(bufnr) end
         )
       end,
@@ -45,5 +44,12 @@ return {
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
+  },
+  v = {
+    V = {"<cmd>m '>+1<CR>gv=gv", desc = "move selection up"},
+    K = {"<cmd>m '>-2<CR>gv=gv", desc = "move selection down"},
+  },
+  x = {
+    ["<leader>d"] = {"\"_dP", desc="delete without copy"}
   },
 }
