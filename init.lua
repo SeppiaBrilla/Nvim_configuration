@@ -1,6 +1,8 @@
-local lsp = require 'configs.lsp'
-local bar = require 'configs.bar'
-local setup = require 'configs.settings'
+local lsp = require 'lsp'
+local bar = require 'bar'
+local setup = require 'settings'
+
+local cmp = require 'cmp_config'
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -33,21 +35,7 @@ require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
   'tpope/vim-fugitive', 'tpope/vim-rhubarb', -- Detect tabstop and shiftwidth automatically 'tpope/vim-sleuth', {'akinsho/toggleterm.nvim', version = "*", config = true},
   bar(),
-  {
-    -- Autocompletion
-    'hrsh7th/nvim-cmp',
-    dependencies = {
-      -- Snippet Engine & its associated nvim-cmp source
-      'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip',
-
-      -- Adds LSP completion capabilities
-      'hrsh7th/cmp-nvim-lsp',
-
-      -- Adds a number of user-friendly snippets
-      'rafamadriz/friendly-snippets',
-    },
-  },
+  cmp['init'](),
   lsp(),
 
   -- Useful plugin to show you pending keybinds.
@@ -424,6 +412,5 @@ mason_lspconfig.setup_handlers {
     }
   end
 }
-
-require 'configs.cmp'
-require 'configs.mappings'
+cmp['setup']()
+require 'mappings'
