@@ -1,10 +1,7 @@
 function Mappings()
 	-- terminal emulator
-
 	vim.keymap.set('n', '<leader>tf', "<cmd>ToggleTerm direction=float<cr>", { desc = "ToggleTerm float" })
 	vim.keymap.set('n', '<leader>th', "<cmd>ToggleTerm direction=horizontal<cr>", { desc = "ToggleTerm horizontal" })
-
-
 
 	--git
 	vim.keymap.set('n', '<leader>gg', "<cmd>TermExec direction=float cmd=lazygit<cr>", { desc = "ToggleTerm horizontal" })
@@ -22,8 +19,6 @@ function Mappings()
 	-- comment 
 	vim.keymap.set('n','<leader>k', function() require('Comment.api').toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1) end, {desc = "toggle comment"})
 	vim.keymap.set('v','<leader>k', "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>", {desc = "toggle comment"})
-
-
 
 	-- lsp
 	vim.keymap.set('n','<leader>.r', function() vim.lsp.buf.rename() end, {desc = 'rename'})
@@ -66,6 +61,12 @@ function Mappings()
 	vim.keymap.set('n', 'L', '<Cmd>BufferNext<CR>', {desc='next buffer'})
 	vim.keymap.set('n', 'H', '<Cmd>BufferPrevious<CR>', {desc='previous buffer'})
 	vim.keymap.set('n', 'c', '<Cmd>BufferClose<CR>', {desc='close buffer'})
+
+	-- motion
+	vim.keymap.set('i', '<C-j>','<esc>j i', {desc = 'move down while in insert mode'})
+	vim.keymap.set('i', '<C-k>','<esc>k i', {desc = 'move up while in insert mode'})
+	vim.keymap.set('i', '<C-h>','<esc>h i', {desc = 'move left while in insert mode'})
+	vim.keymap.set('i', '<C-l>','<esc>l i', {desc = 'move right while in insert mode'})
 end
 
 return Mappings
