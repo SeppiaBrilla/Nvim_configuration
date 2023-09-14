@@ -67,6 +67,10 @@ function Mappings()
 	vim.keymap.set('i', '<C-k>','<esc>k i', {desc = 'move up while in insert mode'})
 	vim.keymap.set('i', '<C-h>','<esc>h i', {desc = 'move left while in insert mode'})
 	vim.keymap.set('i', '<C-l>','<esc>l i', {desc = 'move right while in insert mode'})
+
+	-- copy down
+	vim.keymap.set('n', '<C-d>', 'yyp', { desc = 'copy line down' })
+	vim.keymap.set('i', '<C-d>', '<esc> yyp i', { desc = 'copy line down' })
 end
 
 return Mappings
