@@ -11,6 +11,13 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 
+local o = vim.o
+
+o.expandtab = true
+o.smartindent = true
+o.tabstop = 4
+o.shiftwidth = 4
+
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
