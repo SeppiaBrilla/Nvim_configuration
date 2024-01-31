@@ -38,9 +38,14 @@ require('lazy').setup({
   extras(),
   telescope_setup['setup'](),
   tree['setup'](),
+  {
+       "m4xshen/hardtime.nvim",
+       dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+       opts = { disable_mouse = false}
+  },
 }, {})
 
-
+require("hardtime").setup()
 settings_setup()
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
