@@ -54,6 +54,14 @@ function Setup()
 			      state.commands.open(state)
 			    end
 			  end,
+              close = function (state)
+                local node = state.tree:get_node()
+			    if node.type == "directory" or node:has_children() then
+			      if node:is_expanded() then -- if unexpanded, expand
+                    state.commands.toggle_node(state)
+                  end
+                end
+              end
 			},
 			window = {
 			width = 30,
@@ -61,6 +69,7 @@ function Setup()
 			  ["<space>"] = false,
 			  ["H"] = "toggle_hidden",
 			  ["l"] = "child_or_open",
+			  ["h"] = "close",
 			  ["S"] = "open_split",
 			  },
 		      },
