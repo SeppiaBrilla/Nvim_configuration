@@ -10,7 +10,6 @@ local mappings = require 'mappings'
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-
 local o = vim.o
 
 o.expandtab = true
@@ -43,8 +42,19 @@ require('lazy').setup({
        dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
        opts = { disable_mouse = false}
   },
+  {
+    'rebelot/kanagawa.nvim',
+  },
+    {
+        "kylechui/nvim-surround",
+        version = "*",
+        event = "VeryLazy",
+        config = function()
+            require("nvim-surround").setup({
+            })
+        end
+    },
 }, {})
-
 require("hardtime").setup()
 settings_setup()
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -62,3 +72,5 @@ require('neodev').setup()
 lsp['servers']()
 cmp['setup']()
 mappings()
+require('kanagawa').setup()
+require("kanagawa").load("wave")
